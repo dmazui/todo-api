@@ -1,27 +1,27 @@
-spring: 
-    datasource:
-        url: jdbc:postgresql://cb4l59cdg4fg1k.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcb9pp0sdhbqjp?sslmode=require
-        username: u9ju6jjouk99hd
-        password: pdb9beb1d2ceb43849bb09859fe15d13c1f4d0941e56b1f8d7c0fdd1267fd8cbf
-        driver-class-name: org.postgresql.Driver
-
-        tomcat:
-            initial-size: 2 
-      
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-        show-sql: false
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                temp:    
-                    use_jdbc_metadata_defaults: false
-            
-    servlet:
-        multipart:
-            enabled: true
-            file-size-threshold: 2KB
-            max-request-size: 215MB
-            max-file-size: 200MB
-    
+#spring: 
+#    datasource:
+#        url: jdbc:postgresql://cb4l59cdg4fg1k.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcb9pp0sdhbqjp?sslmode=require
+#        username: u9ju6jjouk99hd
+#        password: pdb9beb1d2ceb43849bb09859fe15d13c1f4d0941e56b1f8d7c0fdd1267fd8cbf
+#        driver-class-name: org.postgresql.Driver
+#
+#        tomcat:
+#            initial-size: 2 
+#      
+#    jpa:
+#        database-platform: org.hibernate.dialect.PostgreSQLDialect
+#        show-sql: false
+#        hibernate:
+#            ddl-auto: update
+#        properties:
+#            hibernate:
+#                temp:    
+#                    use_jdbc_metadata_defaults: false
+#            
+#    servlet:
+#        multipart:
+#            enabled: true
+#            file-size-threshold: 2KB
+#            max-request-size: 215MB
+#            max-file-size: 200MB
+#    
