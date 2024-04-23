@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -29,12 +30,16 @@ public class Tarefa {
 	@Column(length = 60)
 	private String titulo;
 
-	@Column(length = 255)
+	@Lob
 	private String descricao;
 	
+	@Column
 	private LocalDateTime dataDeCriacao;
+	
+	@Column
 	private LocalDateTime dataDeComclusao;
 	
+	@Column
 	private boolean concluido;
 
 }
