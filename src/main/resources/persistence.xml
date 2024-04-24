@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="myPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <class>com.example.entity.User</class> <!-- Classe de Entidade -->
+        
+        <!-- Configuração do Banco de Dados -->
+        <properties>
+            <!-- Configurações de Conexão com o Banco de Dados -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://cb4l59cdg4fg1k.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcb9pp0sdhbqjp"/>
+            <property name="javax.persistence.jdbc.user" value="u9ju6jjouk99hd"/>
+            <property name="javax.persistence.jdbc.password" value="pdb9beb1d2ceb43849bb09859fe15d13c1f4d0941e56b1f8d7c0fdd1267fd8cbf"/>
+            
+            <!-- Especificar o Hibernate como o provedor JPA (opcional) -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            
+            <!-- Outras propriedades podem ser configuradas conforme necessário -->
+        </properties>
+    </persistence-unit>
+</persistence>

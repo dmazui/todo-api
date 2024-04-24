@@ -40,7 +40,7 @@ public class Tarefa implements Serializable {
 	private LocalDateTime dataDeCriacao;
 	
 	@Column
-	private LocalDateTime dataDeComclusao;
+	private LocalDateTime dataDeConclusao;
 	
 	@Column
 	private boolean concluido;
