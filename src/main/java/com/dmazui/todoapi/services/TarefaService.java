@@ -3,8 +3,11 @@ package com.dmazui.todoapi.services;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.dmazui.todoapi.dtos.TarefaDTO;
 import com.dmazui.todoapi.mappers.DtoToTarefa;
 import com.dmazui.todoapi.mappers.TarefaToDto;
 import com.dmazui.todoapi.model.Tarefa;
@@ -24,11 +27,10 @@ public class TarefaService {
 		this.toTarefa = toTarefa;
 	}
 
-	public Tarefa save(Tarefa source) {
-//		return toDto.convert(repository.save(toTarefa.convert(dto)));
+	public TarefaDTO save(TarefaDTO source) {
 		source.setDataDeCriacao(LocalDateTime.now());
 		validaConclusao(source);
-		return repository.save(source);
+		return toDto.convert(repository.save(toTarefa.convert(source)));
 	}
 	
 	public Tarefa findById(Long id) {
@@ -36,24 +38,22 @@ public class TarefaService {
 	}
 
 	public List<Tarefa> findAll() {
-//	    Sort sort = Sort.by(Direction.DESC, "dataDeCriacao");
-//	    return repository.findAll(sort);
-	    return repository.findAll();
-	    
+	    Sort sort = Sort.by(Direction.DESC, "dataDeCriacao");
+	    return repository.findAll(sort);
 	}
-	public Tarefa update(Long id, Tarefa source) {
+
+	public TarefaDTO update(Long id, TarefaDTO source) {
 		validaConclusao(source);
     	source.setId(id);
-    	return repository.save(source);
-    
-	  }
+		return toDto.convert(repository.save(toTarefa.convert(source)));    
+	}
 
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
 
 	
-	private void validaConclusao(Tarefa source) {
+	private void validaConclusao(TarefaDTO source) {
 		if (source.isConcluido()) {
 			source.setDataDeConclusao(LocalDateTime.now());
 		}
