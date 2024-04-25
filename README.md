@@ -12,4 +12,4 @@
 - SpringDoc OpenAPI 3
 - PostgreSql
 
-- [swagger](https://dmazui-todo-api-499a280bb986.herokuapp.com/swagger-ui/index.html)
+- [swagger](https://dmazui-todo-api-499a280bb986.herokuapp.com/swagger-ui/index.html) funcional no heroku com banco PostgreSql de teste
