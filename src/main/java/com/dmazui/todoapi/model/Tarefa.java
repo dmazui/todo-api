@@ -11,11 +11,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tarefas")
 public class Tarefa implements Serializable {
 
