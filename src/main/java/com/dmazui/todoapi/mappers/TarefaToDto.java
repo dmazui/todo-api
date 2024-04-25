@@ -17,9 +17,9 @@ public class TarefaToDto implements Converter<Tarefa, TarefaDTO>{
 		dto.setId(source.getId());
 		dto.setTitulo(source.getTitulo());
 		dto.setDescricao(source.getDescricao());
-		dto.setDataDeCriacao(source.getDataDeCriacao());
-		dto.setDataDeConclusao(source.getDataDeConclusao());
-		dto.setConcluido(source.isConcluido());
+//		dto.setDataDeCriacao(source.getDataDeCriacao());
+//		dto.setDataDeConclusao(source.getDataDeConclusao());
+//		dto.setConcluido(source.isConcluido());
 		
 		return dto;
 	}
