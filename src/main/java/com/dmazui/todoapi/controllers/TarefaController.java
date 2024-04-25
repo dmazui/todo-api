@@ -16,6 +16,8 @@ import com.dmazui.todoapi.dtos.TarefaDTO;
 import com.dmazui.todoapi.model.Tarefa;
 import com.dmazui.todoapi.services.TarefaService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/v1/tarefas")
@@ -28,7 +30,7 @@ public class TarefaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<TarefaDTO> save(@RequestBody TarefaDTO source) throws Exception {
+	public ResponseEntity<TarefaDTO> save(@RequestBody @Valid TarefaDTO source) throws Exception {
 		try {
 			return ResponseEntity.ok(service.save(source));
 		} catch (Exception e) { }
@@ -59,7 +61,5 @@ public class TarefaController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-
-	
 	
 }
