@@ -1,13 +1,10 @@
 package com.dmazui.todoapi.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.dmazui.todoapi.dtos.TarefaDTO;
 import com.dmazui.todoapi.mappers.DtoToTarefa;
 import com.dmazui.todoapi.mappers.TarefaToDto;
 import com.dmazui.todoapi.model.Tarefa;
@@ -29,6 +26,8 @@ public class TarefaService {
 
 	public Tarefa save(Tarefa source) {
 //		return toDto.convert(repository.save(toTarefa.convert(dto)));
+		source.setDataDeCriacao(LocalDateTime.now());
+		validaConclusao(source);
 		return repository.save(source);
 	}
 	
@@ -43,13 +42,20 @@ public class TarefaService {
 	    
 	}
 	public Tarefa update(Long id, Tarefa source) {
+		validaConclusao(source);
     	source.setId(id);
     	return repository.save(source);
     
 	  }
+
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
 
 	
+	private void validaConclusao(Tarefa source) {
+		if (source.isConcluido()) {
+			source.setDataDeConclusao(LocalDateTime.now());
+		}
+	}
 }
