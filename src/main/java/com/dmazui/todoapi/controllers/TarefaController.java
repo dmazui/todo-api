@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dmazui.todoapi.dtos.TarefaDTO;
 import com.dmazui.todoapi.model.Tarefa;
 import com.dmazui.todoapi.services.TarefaService;
 
@@ -27,7 +28,7 @@ public class TarefaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Tarefa> save(@RequestBody Tarefa source) throws Exception {
+	public ResponseEntity<TarefaDTO> save(@RequestBody TarefaDTO source) throws Exception {
 		try {
 			return ResponseEntity.ok(service.save(source));
 		} catch (Exception e) { }
@@ -46,7 +47,7 @@ public class TarefaController {
 	}
 	
 	@PutMapping("{id}")
-	public ResponseEntity<Tarefa> update(@PathVariable("id") Long id, @RequestBody Tarefa source) throws Exception {
+	public ResponseEntity<TarefaDTO> update(@PathVariable("id") Long id, @RequestBody TarefaDTO source) throws Exception {
 		return (service.findById(id) != null) ? ResponseEntity.ok(service.update(id, source)) : ResponseEntity.notFound().build();
 	}
 
