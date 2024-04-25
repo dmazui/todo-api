@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.dmazui.todoapi.model.Tarefa;
@@ -39,6 +40,25 @@ class TodoApiApplicationTests {
 					.expectStatus().isBadRequest();
 	}
 	
+//	@Sql("/insert.sql")
+	@Test
+	public void testeAtualizacaoSucesso() {
+		var tarefa = new Tarefa(99L,"titulo 7","descricao7",false,LocalDateTime.now(),null);
+
+		webTestClient.post()
+						.uri("/v1/tarefas")
+						.bodyValue(tarefa);
+		
+		
+		var tarefa2 = new Tarefa(99L,"titulo 77","descricao77",false,LocalDateTime.now(),null);
+
+		webTestClient
+				.put()
+				.uri("/tarefas/" + 99)
+				.bodyValue(tarefa2)
+				.exchange()
+				.expectStatus().isNotFound();
+	}
 
 	@Test
 	public void testeAtualizacaoFalha() {
